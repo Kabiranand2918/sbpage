@@ -53,7 +53,7 @@ var nextTimeData = "";
 console.log(nextTimeData);
 function makeAjaxRequest() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'api.php?token=WILASKLDJADLKJASD&view=true&time='+nextTimeData+'&site=sbpage.pages.dev', true);
+    xhr.open('GET', 'api.php?token=812c63d245bf954f695fabd7986d02ab4d5e6&view=true&time='+nextTimeData+'&site=sbpage.pages.dev', true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var jsonResponse = JSON.parse(xhr.responseText);
