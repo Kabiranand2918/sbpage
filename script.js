@@ -1,4 +1,4 @@
-var API_URL = "https://p4ni.cloud/api.php?token=812c63d245bf954f695fabd7986d02ab4d5e6";
+var API_URL = "https://p4ni.cloud/api.php?token=WILASKLDJADLKJASD";
 var OTT = 0;
 var hasPath = "";
 
