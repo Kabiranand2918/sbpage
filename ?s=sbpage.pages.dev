@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Table</title>
+    <style>
+        @keyframes ellipsis {
+            0% {
+                content: ".";
+            }
+            33% {
+                content: "..";
+            }
+            66% {
+                content: "...";
+            }
+            100% {
+                content: "";
+            }
+        }
+
+        h3::after {
+            content: "";
+            display: inline-block;
+            animation: ellipsis 1s infinite steps(3);
+        }
+
+        /* Add your existing styles for h3 here */
+        h3 {
+            color: green;
+        }
+    </style>
+</head>
+<style>
+
+.data {
+    text-align:center;
+    padding: 10px;
+    
+}
+</style>
+<body>
+
+<div style="text-align:center">
+    <span style="text-align:center;color:red;">Running...</span>
+    <h2 style="color:black;text-align:center;margin-top:0;">All Data</h2>
+</div>
+<div id="result"></div>
+<script>
+
+var nextTimeData = "";
+console.log(nextTimeData);
+function makeAjaxRequest() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'api.php?token=WILASKLDJADLKJASD&view=true&time='+nextTimeData+'&site=sbpage.pages.dev', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jsonResponse = JSON.parse(xhr.responseText);
+            if(jsonResponse.status==200){
+                nextTimeData = jsonResponse.time;
+                // document.getElementById('result').innerHTML += jsonResponse.payload;   
+                document.getElementById('result').insertAdjacentHTML('afterbegin', jsonResponse.payload);
+            }else{
+                console.log("no latest reqeust found "+nextTimeData);
+            }
+        }
+    };
+    xhr.send();
+}
+makeAjaxRequest();
+setInterval(makeAjaxRequest, 1000);
+</script>
+</body>
+</html>
+
