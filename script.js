@@ -68,11 +68,10 @@ window.onload = function() {
 };
 
 function getQuery(query){
-        
+
     var currentURL = window.location.href;
     var urlParams = new URLSearchParams(currentURL.split('?')[1]);
     var nextValue = urlParams.get(query);
     return nextValue;
 }
-
 
